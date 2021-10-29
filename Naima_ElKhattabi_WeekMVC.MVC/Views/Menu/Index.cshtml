@@ -1,0 +1,32 @@
+﻿@model List<MenuViewModel>
+
+<h1>Ecco la lista dei Menu del nostro ristorante</h1>
+@if (User.IsInRole("Restaurateur")) 
+{
+    <a class="btn btn-primary" asp-controller="Menu" asp-action="Create" type="button">Inserisci Nuovo Menu</a>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>
+                    <a asp-controller="Menu" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Visualizza Dettagli Menu</a>
+                    @if (User.IsInRole("Restaurateur"))
+                    {
+                        <a asp-controller="Menu" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Modifica</a>
+                        <a asp-controller="Menu" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Elimina</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

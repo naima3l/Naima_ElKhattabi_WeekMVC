@@ -1,0 +1,41 @@
+﻿@model DishViewModel
+<h1>Inserisci nuovo menù</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Id" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="Id" readonly>
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="Name" placeholder="Inserisci il nome del nuovo piatto">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="Description" placeholder="Inserisci la descrizione del nuovo piatto">
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Type" class="form-label"></label>
+        <select asp-for="Type" asp-items="@ViewBag.Tipologia" class="form-control">
+            <option value="">Selezionare un'opzione...</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="Price" placeholder="Inserisci il prezzo del nuovo piatto">
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="MenuId" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="MenuId" placeholder="Inserisci l'id del menù a cui appartiene'">
+        <span asp-validation-for="MenuId" class="text-danger"></span>
+    </div>
+
+    <input type="submit" value="Inserisci" class="btn btn-primary" />
+    <input type="reset" value="Reset" class="btn btn-danger" />
+    <a class="btn btn-primary" asp-action="Index" role="button">Back</a>
+</form>
